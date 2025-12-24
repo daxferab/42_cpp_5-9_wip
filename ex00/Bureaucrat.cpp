@@ -54,9 +54,9 @@ int	Bureaucrat::getGrade() const
 void	Bureaucrat::setGrade(int grade)
 {
 	if (grade > 150)
-		throw GradeTooHighException();
-	if (grade < 1)
 		throw GradeTooLowException();
+	if (grade < 1)
+		throw GradeTooHighException();
 	_grade = grade;
 }
 
@@ -80,10 +80,10 @@ std::ostream&	operator<<(std::ostream& os, const Bureaucrat& b)
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade must be <= 150";
+	return "Grade too high";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade must be >= 0";
+	return "Grade too low";
 }
