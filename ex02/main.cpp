@@ -6,16 +6,68 @@
 
 int main(void)
 {
-	ShrubberyCreationForm	shrub("home");
-	RobotomyRequestForm		robo("home");
-	PresidentialPardonForm	presi("home");
-	std::cout << "Created " << presi.getName() << " with ";
-	std::cout << presi.getSignGrade() << " sign grade and ";
-	std::cout << presi.getExeGrade() << " exec grade." << std::endl;
-	std::cout << "Created " << robo.getName() << " with ";
-	std::cout << robo.getSignGrade() << " sign grade and ";
-	std::cout << robo.getExeGrade() << " exec grade." << std::endl;
-	std::cout << "Created " << shrub.getName() << " with ";
-	std::cout << shrub.getSignGrade() << " sign grade and ";
-	std::cout << shrub.getExeGrade() << " exec grade." << std::endl;
+	ShrubberyCreationForm	shrub("Sahara");
+	RobotomyRequestForm		robo("Rudolf");
+	PresidentialPardonForm	presi("Frank");
+	Bureaucrat				god("God", 1);
+	Bureaucrat				human("Human", 150);
+
+	std::cout << std::endl;
+	std::cout << "Created:" << std::endl;
+	std::cout << god << std::endl;
+	std::cout << std::endl;
+	std::cout << "Trying to execute unsigned form..." << std::endl;
+
+	try
+	{
+		shrub.execute(god);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Couldn't execute because " << e.what() << '\n';
+	}
+	std::cout << std::endl;
+	std::cout << "Signing..." << std::endl;
+	god.signForm(shrub);
+	god.signForm(robo);
+	god.signForm(presi);
+	std::cout << std::endl;
+	std::cout << "Executing forms..." << std::endl;
+	try
+	{
+		shrub.execute(god);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Couldn't execute because " << e.what() << '\n';
+	}
+	std::cout << std::endl;
+	try
+	{
+		robo.execute(god);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Couldn't execute because " << e.what() << '\n';
+	}
+	std::cout << std::endl;
+	try
+	{
+		presi.execute(god);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Couldn't execute because " << e.what() << '\n';
+	}
+	std::cout << std::endl;
+	std::cout << "Trying to execute without permissions..." << std::endl;
+	try
+	{
+		presi.execute(human);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Couldn't execute because " << e.what() << '\n';
+	}
+	std::cout << std::endl;
 }

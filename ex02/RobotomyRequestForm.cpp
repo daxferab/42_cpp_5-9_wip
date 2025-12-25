@@ -41,3 +41,13 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 /***************************** MEMBER FUNCTIONS *******************************/
 
+void	RobotomyRequestForm::executeAction() const
+{
+	std::cout << "Performing robotomy..." << std::endl;
+	std::cout << "brrrrrrrrrrrr" << std::endl;
+	bool success = rand() % 2;
+	if (success)
+		std::cout << _target << " has been robotomized!" << std::endl;
+	else
+		std::cout << "Robotomy to" << _target << " failed:(" << std::endl;
+}

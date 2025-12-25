@@ -3,14 +3,14 @@
 /************************* ORTHODOX CANONICAL FORM ****************************/
 
 PresidentialPardonForm::PresidentialPardonForm() : 
-	AForm("pardon", 145, 137),
+	AForm("pardon", 25, 5),
 	_target("none")
 {
 	std::cout << "PresidentialPardonForm default constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : 
-	AForm("pardon", 145, 137),
+	AForm("pardon", 25, 5),
 	_target(target)
 {
 	std::cout << "PresidentialPardonForm constructor called" << std::endl;
@@ -41,3 +41,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 /***************************** MEMBER FUNCTIONS *******************************/
 
+void		PresidentialPardonForm::executeAction() const
+{
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+}
