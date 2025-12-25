@@ -11,6 +11,7 @@ int main(void)
 	PresidentialPardonForm	presi("Frank");
 	Bureaucrat				god("God", 1);
 	Bureaucrat				human("Human", 150);
+	srand(time(NULL));
 
 	std::cout << std::endl;
 	std::cout << "Created:" << std::endl;
