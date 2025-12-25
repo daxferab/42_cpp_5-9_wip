@@ -49,5 +49,5 @@ void	RobotomyRequestForm::executeAction() const
 	if (success)
 		std::cout << _target << " has been robotomized!" << std::endl;
 	else
-		std::cout << "Robotomy to" << _target << " failed:(" << std::endl;
+		std::cout << "Robotomy to " << _target << " failed:(" << std::endl;
 }

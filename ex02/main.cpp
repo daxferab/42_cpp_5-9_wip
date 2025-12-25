@@ -26,6 +26,8 @@ int main(void)
 	{
 		std::cerr << "Couldn't execute because " << e.what() << '\n';
 	}
+	god.executeForm(robo);
+	human.executeForm(robo);
 	std::cout << std::endl;
 	std::cout << "Signing..." << std::endl;
 	god.signForm(shrub);
@@ -33,6 +35,8 @@ int main(void)
 	god.signForm(presi);
 	std::cout << std::endl;
 	std::cout << "Executing forms..." << std::endl;
+	god.executeForm(robo);
+	human.executeForm(robo);
 	try
 	{
 		shrub.execute(god);
