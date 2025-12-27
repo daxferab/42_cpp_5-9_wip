@@ -3,6 +3,22 @@
 static void	display(std::string type, std::string literal);
 static void	handle_special(std::string literal);
 
+/************************* ORTHODOX CANONICAL FORM ****************************/
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
+{
+	if (this != &other) {}
+	std::cout << "ScalarConverter Assignment Operator Called" << std::endl;
+
+	return (*this);;
+}
+ScalarConverter::~ScalarConverter()
+{
+	std::cout << "ScalarConverter Destructor Called" << std::endl;
+}
+
+/*************************** NONMEMBER FUNCTIONS ******************************/
+
 void	ScalarConverter::convert(std::string literal)
 {
 	display(strType(literal), literal);
