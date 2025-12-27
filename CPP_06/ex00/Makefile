@@ -4,7 +4,7 @@ CXX= c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = obj
 
-SRC = main.cpp ScalarConverter.cpp whichType.cpp
+SRC = main.cpp ScalarConverter.cpp whichType.cpp printTypes.cpp
 
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 

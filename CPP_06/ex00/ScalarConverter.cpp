@@ -15,64 +15,48 @@ static void	display(std::string type, std::string literal)
 		char	p = literal[1];
 		std::cout << "char: '" << p << "'" << std::endl;
 		std::cout << "int: " << static_cast<int>(p) << std::endl;
-		std::cout << "float: " << static_cast<float>(p) << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(p) << std::endl;
+		std::cout << "float: " << static_cast<float>(p) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(p) << ".0" << std::endl;
 	}
-	if (type == INT)
+	else if (type == INT)
 	{
 		char	*end;
-		int		p = static_cast<int>(strtol(literal.c_str(), &end, 10));
+		long	lval = strtol(literal.c_str(), &end, 10);
+		int		p = static_cast<int>(lval);
 
-		if (p < CHAR_MIN || p > CHAR_MAX)
-			std::cout << "char: impossible" << std::endl;
-		else if (p >= 32 && p <= 126)
-			std::cout << "char: '" << static_cast<char>(p) << "'" << std::endl;
-		else 
-			std::cout << "char: non displayable" << std::endl;
+		printChar(static_cast<float>(p));
 		std::cout << "int: " << p << std::endl;
-		std::cout << "float: " << static_cast<float>(p) << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(p) << std::endl;
+		std::cout << "float: " << static_cast<float>(p) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(p) << ".0" << std::endl;
 	}
-	if (type == FLOAT)
+	else if (type == FLOAT)
 	{
 		char	*end;
-		float	p = static_cast<float>(strtof(literal.c_str(), &end));
-		int		c = static_cast<int>(p);
+		float	p = strtof(literal.c_str(), &end);
 
-		if (p < CHAR_MIN || p > CHAR_MAX)
-			std::cout << "char: impossible" << std::endl;
-		else if (c >= 32 && c <= 126)
-			std::cout << "char: '" << static_cast<char>(p) << "'" << std::endl;
-		else 
-			std::cout << "char: non displayable" << std::endl;
-		std::cout << "int: " << static_cast<int>(p) << std::endl;
-		std::cout << "float: " << p << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(p) << std::endl;
+		printChar(p);
+		printInt(p);
+		printFloat(p);
+		printDouble(static_cast<double>(p));
 	}
-	if (type == DOUBLE)
+	else if (type == DOUBLE)
 	{
 		char	*end;
-		double	p = static_cast<double>(strtof(literal.c_str(), &end));
-		int		c = static_cast<int>(p);
+		double	p = strtod(literal.c_str(), &end);
 
-		if (p < CHAR_MIN || p > CHAR_MAX)
-			std::cout << "char: impossible" << std::endl;
-		else if (c >= 32 && c <= 126)
-			std::cout << "char: '" << static_cast<char>(p) << "'" << std::endl;
-		else 
-			std::cout << "char: non displayable" << std::endl;
-		std::cout << "int: " << static_cast<int>(p) << std::endl;
-		std::cout << "float: " << static_cast<float>(p) << "f" << std::endl;
-		std::cout << "double: " << p << std::endl;
+		printChar(static_cast<float>(p));
+		printInt(static_cast<float>(p));
+		printFloat(static_cast<float>(p));
+		printDouble(p);
 	}
-	if (type == NONE)
+	else if (type == NONE)
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
 		std::cout << "float: impossible" << std::endl;
 		std::cout << "double: impossible" << std::endl;
 	}
-	if (type == SPECIAL)
+	else if (type == SPECIAL)
 		handle_special(literal);
 }
 
@@ -85,12 +69,12 @@ static void	handle_special(std::string literal)
 		std::cout << "float: +inff" << std::endl;
 		std::cout << "double: +inf" << std::endl;
 	}
-	if (literal == "-inf" || literal == "-inff")
+	else if (literal == "-inf" || literal == "-inff")
 	{
 		std::cout << "float: -inff" << std::endl;
 		std::cout << "double: -inf" << std::endl;
 	}
-	if (literal == "nan" || literal == "nanf")
+	else if (literal == "nan" || literal == "nanf")
 	{
 		std::cout << "float: nanf" << std::endl;
 		std::cout << "double: nan" << std::endl;
