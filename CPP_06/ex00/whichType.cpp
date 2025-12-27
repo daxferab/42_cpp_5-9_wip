@@ -5,6 +5,7 @@ static bool	isInt(std::string str);
 static bool	isFloat(std::string str);
 static bool	isDouble(std::string str);
 static bool	isSpecial(std::string str);
+static bool hasDecimalPoint(std::string num);
 
 std::string	strType(std::string str)
 {
@@ -34,22 +35,29 @@ static bool	isInt(std::string str)
 static bool	isFloat(std::string str)
 {
 	char	*end;
-	float	num;
-
-	num = strtof(str.c_str(), &end);
-	return (num && *end == 'f' && *(++end) == '\0');
+	
+	if (str.length() == 1 || !hasDecimalPoint(str)) return (false);
+	strtof(str.c_str(), &end);
+	return ((*end == 'f' || *end == 'F') && *(++end) == '\0');
 }
 
 static bool	isDouble(std::string str)
 {
 	char	*end;
-	double	num;
-
-	num = strtod(str.c_str(), &end);
-	return (num && *end == '\0');
+	
+	strtod(str.c_str(), &end);
+	return (*end == '\0');
 }
 
 static bool	isSpecial(std::string str)
 {
 	return (str == "nan" || str == "nanf" || str == "-inf" || str == "-inff" || str == "+inf" || str == "+inff");
+}
+
+static bool hasDecimalPoint(std::string num)
+{
+	for (size_t i = 0; i < num.length(); i++)
+		if (num.at(i) == '.')
+			return true;
+	return false;
 }
