@@ -63,7 +63,7 @@ static void	handle_special(std::string literal)
 {
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
-	if (literal == "+inf" || literal == "+inff")
+	if (literal == "+inf" || literal == "+inff" || literal == "inf" || literal == "inff")
 	{
 		std::cout << "float: +inff" << std::endl;
 		std::cout << "double: +inf" << std::endl;

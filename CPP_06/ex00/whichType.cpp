@@ -51,7 +51,7 @@ static bool	isDouble(std::string str)
 
 static bool	isSpecial(std::string str)
 {
-	return (str == "nan" || str == "nanf" || str == "-inf" || str == "-inff" || str == "+inf" || str == "+inff");
+	return (str == "nan" || str == "nanf" || str == "-inf" || str == "-inff" || str == "+inf" || str == "+inff" || str == "inf" || str == "inff");
 }
 
 static bool hasDecimalPoint(std::string num)
