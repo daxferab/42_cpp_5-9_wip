@@ -12,8 +12,8 @@ std::string	strType(std::string str)
 	if (isSpecial(str)) return SPECIAL;
 	if (isChar(str)) return CHAR;
 	if (isInt(str)) return INT;
-	if (isFloat(str)) return FLOAT;
 	if (isDouble(str)) return DOUBLE;
+	if (isFloat(str)) return FLOAT;
 	return NONE;
 }
 
@@ -34,17 +34,19 @@ static bool	isInt(std::string str)
 static bool	isFloat(std::string str)
 {
 	char	*end;
+	float	num;
 
-	strtof(str.c_str(), &end);
-	return (*end == 'f' && *(++end) == '\0');
+	num = strtof(str.c_str(), &end);
+	return (num && *end == 'f' && *(++end) == '\0');
 }
 
 static bool	isDouble(std::string str)
 {
 	char	*end;
+	double	num;
 
-	strtod(str.c_str(), &end);
-	return (*end == '\0');
+	num = strtod(str.c_str(), &end);
+	return (num && *end == '\0');
 }
 
 static bool	isSpecial(std::string str)

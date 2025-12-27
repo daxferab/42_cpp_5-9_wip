@@ -20,9 +20,8 @@ static void	display(std::string type, std::string literal)
 	}
 	else if (type == INT)
 	{
-		char	*end;
-		long	lval = strtol(literal.c_str(), &end, 10);
-		int		p = static_cast<int>(lval);
+		int		i = atoi(literal.c_str());
+		int		p = static_cast<int>(i);
 
 		printChar(static_cast<float>(p));
 		std::cout << "int: " << p << std::endl;
