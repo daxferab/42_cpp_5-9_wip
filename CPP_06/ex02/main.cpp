@@ -11,7 +11,7 @@ int main (void)
 	for (int i = 0; i < 4 ; i++)
 	{
 		std::cout << "--------------------------------" << std::endl;
-		Base *object = generate();
+		Base* object = generate();
 		identify(object);
 		identify(*object);
 		delete object;
