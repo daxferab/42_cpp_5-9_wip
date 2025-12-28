@@ -1,10 +1,10 @@
-NAME = 
+NAME = classCast
 
 CXX= c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = obj
 
-SRC = main.cpp 
+SRC = main.cpp Base.cpp baseUtils.cpp
 
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
